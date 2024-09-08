@@ -14,3 +14,8 @@ cd frontend
 npm install 
 npm start
 open the link to view the output
+
+
+Admin credentials
+Mail: admin@mail.com
+Password: password
