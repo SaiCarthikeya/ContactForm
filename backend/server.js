@@ -38,7 +38,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 
-app.get('/api/admin/responses', async (req, res) => {
+app.get('/api/admin/messages', async (req, res) => {
     try {
         const responses = await Contact.find();
         res.status(200).json(responses);

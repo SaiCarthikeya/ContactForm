@@ -9,7 +9,7 @@ const ContactForm = () => {
     const [message, setMessage] = useState('');
     const [status, setStatus] = useState('');
 
-    const navigate = useNavigate(); // Hook to programmatically navigate
+    const navigate = useNavigate(); 
 
     const formSubmitted = async (e) => {
         e.preventDefault();
@@ -19,27 +19,27 @@ const ContactForm = () => {
             email,
             message
         };
-        navigate('/success'); 
-        // try {
-        //     const response = await axios.post('/api/contact', contactData, {
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     });
+        // navigate('/success'); 
+        try {
+            const response = await axios.post('http://localhost:5000/api/contact', contactData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
 
-        //     if (response.status === 200) {
-        //         setStatus('Message sent successfully!');
-        //         setName('');
-        //         setEmail('');
-        //         setMessage('');
-        //         navigate('/success'); 
-        //     } else {
-        //         setStatus('Failed to send the message. Please try again.');
-        //     }
-        // } catch (error) {
-        //     console.error('Error submitting form:', error);
-        //     setStatus('An error occurred. Please try again.');
-        // }
+            if (response.status === 200) {
+                setStatus('Message sent successfully!');
+                setName('');
+                setEmail('');
+                setMessage('');
+                navigate('/success'); 
+            } else {
+                setStatus('Failed to send the message. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus('An error occurred. Please try again.');
+        }
     };
     
     return (
